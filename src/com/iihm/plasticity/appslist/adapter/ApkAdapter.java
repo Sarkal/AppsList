@@ -1,4 +1,4 @@
-package com.ibc.android.demo.appslist.adapter;
+package com.iihm.plasticity.appslist.adapter;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import com.ibc.android.demo.appslist.activity.R;
+import com.iihm.plasticity.appslist.activity.R;
 
 public class ApkAdapter extends BaseAdapter {
 
@@ -66,11 +67,39 @@ public class ApkAdapter extends BaseAdapter {
 				(int)context.getResources().getDimension(R.dimen.icon_height));
 		holder.apkName.setCompoundDrawables(null, appIcon, null, null);
 		holder.apkName.setCompoundDrawablePadding(3);
-//		holder.apkName.setLayoutParams(new GridView.LayoutParams(
-//				(int)context.getResources().getDimension(R.dimen.width),
-//				(int)context.getResources().getDimension(R.dimen.height)));
-		holder.apkName.setText(appName);
+		holder.apkName.setText(renameApp(appName));
 
 		return convertView;
+	}
+	
+	/**
+	 * Rename the app if the name if too long (20 char max)
+	 * @param name
+	 * @return
+	 */
+	private String renameApp(String name) 
+	{
+		int nbCharMax = 20;
+		String newName = null;
+		if (name.length() > nbCharMax)
+		{
+			String[] split = null;
+			int cptChar = 0;
+			newName = new String();
+			split = name.split("\\s+");
+			for (int i = 0; i < split.length - 1; i++)
+			{
+				cptChar += split[i].length();
+				if (newName.isEmpty())
+					newName = split[i];
+				else if (cptChar < nbCharMax) {
+					newName = newName.concat(" " + split[i]);
+				}
+			}
+		}
+		else
+			newName = name;
+		assert(newName != null);
+		return newName;
 	}
 }

@@ -1,8 +1,11 @@
-package com.ibc.android.demo.appslist.activity;
+package com.iihm.plasticity.appslist.activity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.ibc.android.demo.appslist.app.AppData;
+
+import com.iihm.plasticity.appslist.activity.R;
+import com.iihm.plasticity.appslist.app.AppData;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.pm.FeatureInfo;

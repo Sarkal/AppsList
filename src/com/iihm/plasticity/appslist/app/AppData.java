@@ -1,4 +1,4 @@
-package com.ibc.android.demo.appslist.app;
+package com.iihm.plasticity.appslist.app;
 
 import android.app.Application;
 import android.content.pm.PackageInfo;

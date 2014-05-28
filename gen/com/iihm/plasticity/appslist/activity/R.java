@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.ibc.android.demo.appslist.activity;
+package com.iihm.plasticity.appslist.activity;
 
 public final class R {
     public static final class attr {
